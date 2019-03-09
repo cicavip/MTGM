@@ -1,0 +1,90 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'ui_main.ui'
+#
+# Created by: PyQt5 UI code generator 5.11.3
+#
+# WARNING! All changes made in this file will be lost!
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(349, 388)
+        MainWindow.move(100, 200)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
+        MainWindow.setSizePolicy(sizePolicy)
+        MainWindow.setMaximumSize(QtCore.QSize(349, 477))
+        font = QtGui.QFont()
+        font.setFamily("方正兰亭粗黑_GBK")
+        font.setPointSize(18)
+        MainWindow.setFont(font)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("source/file.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        MainWindow.setWindowIcon(icon)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(110, 0, 141, 91))
+        self.label.setObjectName("label")
+        self.line = QtWidgets.QFrame(self.centralwidget)
+        self.line.setGeometry(QtCore.QRect(-10, 70, 371, 16))
+        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line.setLineWidth(3)
+        self.line.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line.setObjectName("line")
+        self.mtgm_btn = QtWidgets.QPushButton(self.centralwidget)
+        self.mtgm_btn.setGeometry(QtCore.QRect(71, 131, 191, 81))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.mtgm_btn.sizePolicy().hasHeightForWidth())
+        self.mtgm_btn.setSizePolicy(sizePolicy)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("source/mt.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.mtgm_btn.setIcon(icon1)
+        self.mtgm_btn.setIconSize(QtCore.QSize(50, 50))
+        self.mtgm_btn.setCheckable(False)
+        self.mtgm_btn.setAutoDefault(False)
+        self.mtgm_btn.setObjectName("mtgm_btn")
+        self.kfgm = QtWidgets.QPushButton(self.centralwidget)
+        self.kfgm.setEnabled(False)
+        self.kfgm.setGeometry(QtCore.QRect(71, 229, 191, 71))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.kfgm.sizePolicy().hasHeightForWidth())
+        self.kfgm.setSizePolicy(sizePolicy)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("source/kf.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.kfgm.setIcon(icon2)
+        self.kfgm.setIconSize(QtCore.QSize(50, 50))
+        self.kfgm.setObjectName("kfgm")
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 349, 25))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.menubar.setFont(font)
+        self.menubar.setDefaultUp(True)
+        self.menubar.setObjectName("menubar")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "冲焊测量间管理系统"))
+        MainWindow.setStatusTip(_translate("MainWindow", "青岛质量保证部测量技术科"))
+        self.label.setText(_translate("MainWindow", "冲焊测量间"))
+        self.mtgm_btn.setText(_translate("MainWindow", "测量管理"))
+        self.kfgm.setText(_translate("MainWindow", "库房管理"))
+
