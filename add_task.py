@@ -1,12 +1,11 @@
 from ui5_dialog_addtask import *
 import sys
-import pymysql
 import traceback
 import win32api, win32con
 from datetime import datetime
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
-from create_db import CreateDatabase
+
 
 class AddTask(QWidget, Ui_Dialog_addtask):
 

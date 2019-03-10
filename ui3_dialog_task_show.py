@@ -2,8 +2,8 @@ import sys
 from PyQt5.QtWidgets import *
 import win32api, win32con
 import traceback
-from MTGM.show_today_task import *
-from MTGM.ui3_dialog_task import Ui_Dialog_task
+from show_today_task import *
+from ui3_dialog_task import Ui_Dialog_task
 from PyQt5.QtWidgets import QHeaderView
 from PyQt5.QtCore import *
 
