@@ -7,18 +7,25 @@ class Showtadaytask():
 	"""
 
 	def __init__(self):
+		pass
 		'数据库的登录信息'
-		self.host = 'localhost'  # mysql的ip或者本地的地址
-		self.user = 'root'  # mydql的用户
-		self.pw = 'mysql'  # mysql的密码
-
-	def logon_mysql(self, database_name='MT_TASK'):
-		'''prompt：数据库连接
-				1.inputdata:数据库名称（可选）
-
-		'''
-		db = pymysql.connect(self.host, self.user, self.pw, database_name,
-							 charset='utf8')
+	# 	self.host = 'localhost'  # mysql的ip或者本地的地址
+	# 	self.user = 'root'  # mydql的用户
+	# 	self.pw = 'mysql'  # mysql的密码
+	#
+	# def logon_mysql(self, database_name='MT_TASK'):
+	# 	'''prompt：数据库连接
+	# 			1.inputdata:数据库名称（可选）
+	#
+	# 	'''
+	# 	db = pymysql.connect(self.host, self.user, self.pw, database_name,
+	# 						 charset='utf8')
+	# 	return db
+	def logon_mysql(self):
+		from create_db import CreateDatabase
+		# db = pymysql.connect('localhost', 'root', 'mysql', 'MT_TASK', charset='utf8')
+		db_01 = CreateDatabase()
+		db = db_01.logon_mysql()
 		return db
 
 	def create_today_db_table(self):

@@ -23,6 +23,14 @@ def ts(t):
     else:
         return "-"
 
+
+def logon_mysql():
+    from create_db import CreateDatabase
+    # db = pymysql.connect('localhost', 'root', 'mysql', 'MT_TASK', charset='utf8')
+    db_01 = CreateDatabase()
+    db = db_01.logon_mysql()
+    return db
+
 def importExcelToMysql(path):
     ### xlrd版本
     # 读取excel文件
@@ -30,9 +38,6 @@ def importExcelToMysql(path):
     sheets = workbook.sheet_names()
     worksheet = workbook.sheet_by_name(sheets[0])
     workbook_name = path.split("\\")[3].split('.')[0]
-    ###
-
-
     # 将表中数据读到 sqlstr 数组中
     t=worksheet.nrows
     for i in range(2, t):
@@ -56,7 +61,7 @@ def importExcelToMysql(path):
 
         # 打开数据库连接
         db = pymysql.connect("localhost", "root", "mysql", "MT_TASK", charset='utf8')
-
+        db = logon_mysql()
         # 使用cursor()方法获取操作游标
         cursor = db.cursor()
 

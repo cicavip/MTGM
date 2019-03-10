@@ -6,7 +6,7 @@ import win32api, win32con
 from datetime import datetime
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
-
+from create_db import CreateDatabase
 
 class AddTask(QWidget, Ui_Dialog_addtask):
 
@@ -50,7 +50,10 @@ class AddTask(QWidget, Ui_Dialog_addtask):
 			self.addtasktable.setItem(0, j, data)
 
 	def database(self):
-		db = pymysql.connect('localhost', 'root', 'mysql', 'MT_TASK', charset='utf8')
+		from create_db import CreateDatabase
+		# db = pymysql.connect('localhost', 'root', 'mysql', 'MT_TASK', charset='utf8')
+		db_01 = CreateDatabase()
+		db = db_01.logon_mysql()
 		return db
 
 	def comfirm_addtask(self):

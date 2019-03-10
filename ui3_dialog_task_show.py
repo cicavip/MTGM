@@ -21,10 +21,11 @@ class Dialog_showtodaytask(QWidget, Ui_Dialog_task):
 		else:
 			self.date_setted = date
 
-
-
 	def database(self):
-		db = pymysql.connect('localhost', 'root', 'mysql', 'MT_TASK', charset='utf8')
+		from create_db import CreateDatabase
+		# db = pymysql.connect('localhost', 'root', 'mysql', 'MT_TASK', charset='utf8')
+		db_01 = CreateDatabase()
+		db = db_01.logon_mysql()
 		return db
 
 	def initUI(self):

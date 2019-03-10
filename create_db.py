@@ -13,14 +13,14 @@ class CreateDatabase():
         '数据库的登录信息'
         self.host = 'localhost'  # mysql的ip或者本地的地址
         self.user = 'root'  # mydql的用户
-        self.pw = 'mysql'  # mysql的密码
-
-    def logon_mysql(self, database_name=''):
+        self.pw = 'mysql' # mysql的密码
+        self.database_name = 'MT_TASK'
+    def logon_mysql(self, ):
         '''prompt：数据库连接
                 1.inputdata:数据库名称（可选）
 
         '''
-        db = pymysql.connect(self.host, self.user, self.pw, database_name,
+        db = pymysql.connect(self.host, self.user, self.pw, self.database_name,
                              charset='utf8')
         return db
 

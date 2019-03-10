@@ -20,8 +20,12 @@ class Showalltask(QWidget, Ui_Dialog_showalltask):
 
 
 	def database(self):
-		db = pymysql.connect('localhost', 'root', 'mysql', 'MT_TASK', charset='utf8')
+		from create_db import CreateDatabase
+		# db = pymysql.connect('localhost', 'root', 'mysql', 'MT_TASK', charset='utf8')
+		db_01 = CreateDatabase()
+		db = db_01.logon_mysql()
 		return db
+
 	def selecteddata(self):
 		db=self.database()
 		cur = db.cursor()
@@ -38,7 +42,7 @@ class Showalltask(QWidget, Ui_Dialog_showalltask):
 				data = QTableWidgetItem(str(temp_data))
 				data.setTextAlignment(Qt.AlignCenter)  # 转换后可插入表
 				row = self.tasktable.rowCount()
-				self.tasktable.insertRow(row)
+				# self.tasktable.insertRow(row)
 				self.tasktable.setItem(i, j, data)
 				self.tasktable.setEditTriggers(QAbstractItemView.NoEditTriggers)
 

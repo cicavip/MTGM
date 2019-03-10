@@ -6,8 +6,6 @@ from ui3_dialog_task_show import *
 from task_updatesheet import *
 from show_all_task import *
 from add_task import AddTask
-
-
 from PyQt5.QtWidgets import QCalendarWidget
 
 
@@ -41,7 +39,14 @@ class MTGM_window(Ui_Form, Ui_Dialog_task, QtWidgets.QMainWindow, QCalendarWidge
 		self.showalltask.clicked.connect(self.showalltasktable)
 
 		#添加删除任务
-		self.add_del_task.clicked.connect(self.add_delete_task)
+		self.add_del_task.clicked.connect(self.add_delete_task)\
+
+	def database(self):
+		from create_db import CreateDatabase
+		# db = pymysql.connect('localhost', 'root', 'mysql', 'MT_TASK', charset='utf8')
+		db_01 = CreateDatabase()
+		db = db_01.logon_mysql()
+		return db
 
 
 	def taskupdate_button(self):
@@ -53,8 +58,8 @@ class MTGM_window(Ui_Form, Ui_Dialog_task, QtWidgets.QMainWindow, QCalendarWidge
 
 		# 和数据库建立连接
 		if path != "":
-			conn = pymysql.connect('localhost', 'root', 'mysql', 'MT_TASK', charset='utf8')
-
+			# conn = pymysql.connect('localhost', 'root', 'mysql', 'MT_TASK', charset='utf8')
+			conn =self.database()
 			# 创建游标链接
 			cur = conn.cursor()
 			cur.execute("DROP TABLE IF EXISTS VW331")
