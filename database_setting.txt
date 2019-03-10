@@ -1,0 +1,4 @@
+host = '10.236.71.134'  # mysql的ip或者本地的地址
+user_name = 'root'       # mydql的用户
+password = 'mysql-cl'   # mysql的密码
+database_name = 'MT_TASK'#数据库名称

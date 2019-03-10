@@ -7,7 +7,7 @@ from task_updatesheet import *
 from show_all_task import *
 from add_task import AddTask
 from PyQt5.QtWidgets import QCalendarWidget
-
+from PyQt5.QtGui import QIcon
 
 
 class Parentwindow(QMainWindow, Ui_MainWindow):
@@ -17,6 +17,38 @@ class Parentwindow(QMainWindow, Ui_MainWindow):
 		super(Parentwindow, self).__init__(parent)
 		self.main_ui = Ui_MainWindow()
 		self.main_ui.setupUi(self)
+		self.statusbar()
+
+	def statusbar(self):
+		try:
+			self.statusBar()  # 创建一个空的状态栏
+			menubar = self.menuBar()
+			menubar.setNativeMenuBar(False)
+			fileMenu_1 = menubar.addMenu('系统配置')
+
+			# 给menu创建一个打开文件
+			exitAction = QAction('OPEN DATEBASE_SETTING', self)
+			exitAction.setShortcut('Ctr+O')
+			exitAction.setStatusTip('Exit Application')
+			exitAction.triggered.connect(self.open_setting_fiel)
+
+			# 将这个Action添加到fileMenu上
+			fileMenu_1.addAction(exitAction)
+		except Exception as e:
+			traceback.print_exc()
+
+	def open_setting_fiel(self):
+		try:
+			import win32process
+			import os
+			pro_addr = os.path.split(os.path.realpath(__file__))[0]
+			file_addr = pro_addr + '\database_setting.txt'
+			print(file_addr)
+			os.startfile(str(file_addr))
+
+		except Exception as e:
+			traceback.print_exc()
+
 
 class MTGM_window(Ui_Form, Ui_Dialog_task, QtWidgets.QMainWindow, QCalendarWidget):  # 从自动生成的界面类继承
 	"""显示测量管理子窗口
@@ -35,19 +67,17 @@ class MTGM_window(Ui_Form, Ui_Dialog_task, QtWidgets.QMainWindow, QCalendarWidge
 		self.cal = self.calendarWidget
 		self.cal.setGridVisible(True)  # 网格显示
 		self.cal.selectionChanged.connect(self.showselecteddatetask)
-		#显示全部任务
+		# 显示全部任务
 		self.showalltask.clicked.connect(self.showalltasktable)
 
-		#添加删除任务
-		self.add_del_task.clicked.connect(self.add_delete_task)\
-
+		# 添加删除任务
+		self.add_del_task.clicked.connect(self.add_delete_task)
 	def database(self):
 		from create_db import CreateDatabase
 		# db = pymysql.connect('localhost', 'root', 'mysql', 'MT_TASK', charset='utf8')
 		db_01 = CreateDatabase()
 		db = db_01.logon_mysql()
 		return db
-
 
 	def taskupdate_button(self):
 		# 更新任务总表
@@ -59,7 +89,7 @@ class MTGM_window(Ui_Form, Ui_Dialog_task, QtWidgets.QMainWindow, QCalendarWidge
 		# 和数据库建立连接
 		if path != "":
 			# conn = pymysql.connect('localhost', 'root', 'mysql', 'MT_TASK', charset='utf8')
-			conn =self.database()
+			conn = self.database()
 			# 创建游标链接
 			cur = conn.cursor()
 			cur.execute("DROP TABLE IF EXISTS VW331")
@@ -110,8 +140,8 @@ class MTGM_window(Ui_Form, Ui_Dialog_task, QtWidgets.QMainWindow, QCalendarWidge
 
 	def showselecteddatetask(self):
 		try:
-			date = self.selecte_date()# 返回日期
-			aks_1 = win32api.MessageBox(0, "您选择显示的日期为 --"+date+"-- \n\n 即将为您显示~", "提示！", win32con.MB_YESNOCANCEL)
+			date = self.selecte_date()  # 返回日期
+			aks_1 = win32api.MessageBox(0, "您选择显示的日期为 --" + date + "-- \n\n 即将为您显示~", "提示！", win32con.MB_YESNOCANCEL)
 			if aks_1 == 6:
 				self.dlg_1 = Dialog_showtodaytask(date)
 				self.dlg_1.show()
@@ -144,7 +174,6 @@ class MTGM_window(Ui_Form, Ui_Dialog_task, QtWidgets.QMainWindow, QCalendarWidge
 		self.dlg_2.show()
 
 
-
 if __name__ == '__main__':
 	app = QtWidgets.QApplication(sys.argv)
 	main_ui = Parentwindow()
@@ -153,7 +182,6 @@ if __name__ == '__main__':
 	mtgm_ui = MTGM_window()  # 测量管理ui
 	# kfgm_ui = KFMG_window()#库房管理ui
 	showtodaytask_ui = Dialog_showtodaytask()  # 今天任务窗口Ui
-
 
 	"""按钮动作"""
 	# 主界面1 测量管理按钮 单击后显示测量管理窗口
@@ -166,7 +194,6 @@ if __name__ == '__main__':
 	# 测量管理按钮1 单击后显示今天任务状态
 	btn_3 = mtgm_ui.showtodaytask
 	btn_3.clicked.connect(showtodaytask_ui.show)
-
 
 	# # 显示
 	main_ui.show()
