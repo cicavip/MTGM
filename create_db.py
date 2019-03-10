@@ -11,9 +11,9 @@ class CreateDatabase():
 
     def __init__(self):
         '数据库的登录信息'
-        self.host = 'localhost'  # mysql的ip或者本地的地址
+        self.host = '10.236.71.134'  # mysql的ip或者本地的地址
         self.user = 'root'  # mydql的用户
-        self.pw = 'mysql' # mysql的密码
+        self.pw = 'mysql-cl' # mysql的密码
         self.database_name = 'MT_TASK'
     def logon_mysql(self, ):
         '''prompt：数据库连接

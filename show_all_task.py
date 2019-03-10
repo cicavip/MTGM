@@ -21,10 +21,11 @@ class Showalltask(QWidget, Ui_Dialog_showalltask):
 
 	def database(self):
 		from create_db import CreateDatabase
-		# db = pymysql.connect('localhost', 'root', 'mysql', 'MT_TASK', charset='utf8')
+
 		db_01 = CreateDatabase()
 		db = db_01.logon_mysql()
 		return db
+
 
 	def selecteddata(self):
 		db=self.database()
