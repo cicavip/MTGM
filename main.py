@@ -1,5 +1,5 @@
 #程序主入口
-from MTGM.gm_main import *
+from gm_main import *
 
 if __name__ == '__main__':
 	app = QtWidgets.QApplication(sys.argv)
