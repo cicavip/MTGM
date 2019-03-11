@@ -72,7 +72,7 @@ class AddTask(QWidget, Ui_Dialog_addtask):
 			for u in range(1, len(add_list)):
 				dic_1 = {1: '任务名称', 2: '任务数量', 3: '预计送检时间', 4: '预计取件时间', 5: '测量类别', 6: '取消任务', 7: '更换任务', 8: '备注',
 						 9: '测量过程'}
-				if add_list[u] == "":
+				if u'' in add_list:
 					win32api.MessageBox(0, "信息不全！请完善  " + dic_1[u] + "  列信息", "提示！", win32con.MB_OK)
 					break
 				else:
