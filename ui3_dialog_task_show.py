@@ -6,7 +6,7 @@ from show_today_task import *
 from ui3_dialog_task import Ui_Dialog_task
 from PyQt5.QtWidgets import QHeaderView
 from PyQt5.QtCore import *
-
+import pymysql
 
 class Dialog_showtodaytask(QWidget, Ui_Dialog_task):
 
@@ -201,7 +201,7 @@ class Dialog_showtodaytask(QWidget, Ui_Dialog_task):
 				'''
 				 以下可以加入保存数据到数据的操作'''
 				table_name = self.date_setted
-				conn = pymysql.connect('localhost', 'root', 'mysql', 'MT_TASK', charset='utf8')
+				conn = self.database()
 				cur = conn.cursor()
 				# arg_1= []
 				arg_1 = info[:]
