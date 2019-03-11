@@ -41,7 +41,7 @@ class Parentwindow(QMainWindow, Ui_MainWindow):
 		try:
 			import win32process
 			import os
-			pro_addr = os.path.split(os.path.realpath(__file__))[0]
+			pro_addr = os.path.split(os.path.realpath('main.py'))[0]
 			file_addr = pro_addr + '\database_setting.txt'
 			print(file_addr)
 			os.startfile(str(file_addr))

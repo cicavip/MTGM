@@ -20,7 +20,7 @@ class CreateDatabase():
 	def read_db_setting_file(self):
 		import os
 
-		pro_addr = os.path.split(os.path.realpath(__file__))[0]
+		pro_addr = os.path.split(os.path.realpath('main.py'))[0]
 		# print(pro_addr)
 		filename = pro_addr + '\database_setting.txt'
 		# print(filename)
